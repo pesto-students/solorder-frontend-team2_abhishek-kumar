@@ -9,6 +9,8 @@ function App() {
     <div >
         <h1 style={{fontSize:"50px",textAlign:'center'}}>Solorder Setup</h1>
         <h1 style={{textAlign:'center'}}><button onClick={throwError}>Test Sentry</button></h1>
+        <h1 style={{textAlign:'center'}}>GitHub Action test</h1>
+
     </div>
   );
 }
