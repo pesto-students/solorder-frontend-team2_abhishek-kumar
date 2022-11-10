@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Test Build
 
 on: [push]
 
@@ -15,4 +15,3 @@ jobs:
           node-version: '12.x'
       - run: npm i
       - run: npm run build
-      - run: npm start
