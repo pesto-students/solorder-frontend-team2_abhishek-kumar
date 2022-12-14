@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import config from './common/config';
-import App from './App';
+
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import PageRoutes from './pages';
+
 
 // Sentry Configuration
 Sentry.init({
@@ -22,6 +24,6 @@ Sentry.init({
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <PageRoutes />
 );
 
