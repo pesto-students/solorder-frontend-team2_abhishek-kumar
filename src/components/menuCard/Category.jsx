@@ -5,6 +5,9 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import Item from './Item';
+import { Button, IconButton, Tooltip } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -28,9 +31,12 @@ const AccordionSummary = styled((props) => (
     theme.palette.mode === 'dark'
       ? 'rgba(255, 255, 255, .05)'
       : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+  flexDirection: 'row',
+  '& .MuiAccordionSummary-expandIconWrapper': {
     transform: 'rotate(90deg)',
+  },
+  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+    transform: 'rotate(-90deg)',
   },
   '& .MuiAccordionSummary-content': {
     marginLeft: theme.spacing(1),
@@ -42,22 +48,23 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-export default function Category() {
+export default function Category(props) {
   const [expanded, setExpanded] = React.useState(true);
-
-
   return (
     <Accordion expanded={expanded} onChange={(e) => setExpanded(!expanded)}>
-      <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-        <Typography>Bread</Typography>
+      <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" >
+        <Typography alignSelf="center">Bread</Typography>
+        {props.parent !== 'menu' && <Tooltip title="Add Menu item">
+          <IconButton aria-label="delete">
+            <AddCircleOutlineIcon />
+          </IconButton>
+        </Tooltip>}
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-          sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-          sit amet blandit leo lobortis eget.
-        </Typography>
+        <Item {...props} />
+        <Item {...props} />
+        <Item {...props} />
+        <Item {...props} />
       </AccordionDetails>
     </Accordion>
   );

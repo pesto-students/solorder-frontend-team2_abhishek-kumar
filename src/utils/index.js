@@ -23,3 +23,16 @@ export const getToken = () => {
   let token = localStorage.getItem('token');
   return token ? JSON.parse(token) : false;
 }
+
+export const numToAmount = (number = 0, dec = false) => {
+  number = Number(number)
+  if (number === NaN) {
+    return "₹0"
+  } else {
+    return number.toLocaleString('en-IN', {
+      maximumFractionDigits: dec ? 2 : 0,
+      style: 'currency',
+      currency: 'INR'
+    })
+  }
+}

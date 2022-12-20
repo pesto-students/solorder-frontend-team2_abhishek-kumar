@@ -127,19 +127,19 @@ function SignInModel() {
         <Typography variant='h5' component="div" fontWeight={500} marginTop="-25px">Sign In</Typography>
         <Typography variant='p' component="div" fontWeight={500}>or <span style={{ color: "#F53C3C" }} onClick={(e) => openSignUp(e)}>Create an account.</span></Typography>
         <TextField
+          sx={{ marginTop: 2 }}
           id="email"
           label="Email"
           variant="outlined"
           fullWidth
-          margin="normal"
           error={values?.error?.email ? true : false}
-          helperText={values.error.email ? values.error.email : ""}
+          helperText={values.error.email ? values.error.email : " "}
           color="projDark"
           required
           value={values.email}
           onChange={handleChange('email')}
         />
-        <FormControl fullWidth margin="normal" variant="outlined" error={values?.error?.password ? true : false} color="projDark" required>
+        <FormControl sx={{ marginTop: 1 }} fullWidth variant="outlined" error={values?.error?.password ? true : false} color="projDark" required>
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -154,13 +154,13 @@ function SignInModel() {
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }
             label="Password"
           />
-          {values?.error?.password ? <FormHelperText id="my-helper-text">{values.error.password}</FormHelperText> : <></>}
+          <FormHelperText id="my-helper-text" sx={{ visibility: values?.error?.password ? "visible" : "hidden" }}>{values?.error?.password ? values?.error?.password : " "}</FormHelperText>
         </FormControl>
         <SignInBtn onClick={onSignIn}>Sign In</SignInBtn>
       </Box>

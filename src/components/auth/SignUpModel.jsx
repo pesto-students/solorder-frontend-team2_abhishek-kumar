@@ -151,36 +151,36 @@ function SignUpModel() {
         <Typography variant='h5' component="div" fontWeight={500} marginTop="-25px">Sign Up</Typography>
         <Typography variant='p' component="div" fontWeight={500}>or <span style={{ color: "#F53C3C" }} onClick={(e) => openSignIn(e)}>Sign In to your account.</span></Typography>
         <TextField
+          sx={{ marginTop: 2, marginBottom: 1 }}
           id="name"
           label="Name"
           variant="outlined"
           fullWidth
-          margin="normal"
           error={error?.name ? true : false}
-          helperText={error?.name ? error.name : ""}
+          helperText={error?.name ? error.name : " "}
           color="projDark"
           required
           value={name}
           onChange={handleChange("name")}
         />
         <TextField
+          sx={{ marginBottom: 1 }}
           id="name"
           label="Email"
           variant="outlined"
           fullWidth
-          margin="normal"
           error={error?.email ? true : false}
-          helperText={error?.email ? error.email : ""}
+          helperText={error?.email ? error.email : " "}
           color="projDark"
           required
           value={email}
           onChange={handleChange("email")}
         />
         <FormControl
+          sx={{ marginBottom: 1 }}
           fullWidth
           variant="outlined"
           color="projDark"
-          margin="normal"
           error={error?.password ? true : false}
           required
         >
@@ -204,12 +204,11 @@ function SignUpModel() {
             }
             label="Password"
           />
-          {error?.password ? <FormHelperText id="password">{error.password}</FormHelperText> : ""}
+          <FormHelperText id="password" sx={{ visibility: error?.password ? "visible" : "hidden" }} >{error?.password ? error.password : " "}</FormHelperText>
         </FormControl>
         <FormControl
           variant="outlined"
           color="projDark"
-          margin="normal"
           error={values?.error?.confirmPassword ? true : false}
           required
           fullWidth
@@ -234,7 +233,7 @@ function SignUpModel() {
             }
             label="confirmPassword"
           />
-          {error?.confirmPassword ? <FormHelperText id="confirmPassword">{error.confirmPassword}</FormHelperText> : ""}
+          <FormHelperText id="confirmPassword" sx={{ visibility: error?.confirmPassword ? "visible" : "hidden" }}>{error?.confirmPassword ? error.confirmPassword : " "}</FormHelperText>
         </FormControl>
         <Checkbox id="isOwner" aria-label='isOwner' checked={isOwner} onChange={handleChange('isOwner')} />
         <Typography

@@ -23,3 +23,15 @@ body {
 .css-11yukd5-MuiTabs-indicator {
   background-color: #121112 !important;
 }
+
+
+.css-1c99szj-MuiRating-icon.css-1c99szj-MuiRating-icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+  color: #faaf00ad;
+}

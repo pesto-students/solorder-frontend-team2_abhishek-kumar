@@ -8,6 +8,8 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Details from "./Details";
 import UploadImage from "./UploadImage";
 import MenuCard from "../menuCard";
+import SetupMenu from "./SetupMenu";
+import SelectPlan from "./SelectPlan";
 
 const StepDetails = () => {
   return (
@@ -17,6 +19,8 @@ const StepDetails = () => {
         {/* <Details /> */}
         {/* <UploadImage /> */}
         <MenuCard />
+        {/* <SetupMenu /> */}
+        {/* <SelectPlan /> */}
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Button variant="contained" startIcon={<ArrowBackIosNewIcon />}>
             Previous

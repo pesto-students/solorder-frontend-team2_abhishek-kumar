@@ -9,6 +9,8 @@ import SoloSnackbar from "../components/snackbar";
 import Loader from "../components/loader";
 import Registration from "./registration";
 import "./style.css"
+import Menu from "./menu";
+import Setting from "./setting";
 
 
 const theme = createTheme({
@@ -41,6 +43,8 @@ function PageRoutes() {
         <BrowserRouter>
           <Routes>
             <Route path="/registration/:restaurant_id" element={<Registration />} />
+            <Route path="/menu/:restaurant_id" element={<Menu />} />
+            <Route path="/setting" element={<Setting />} />
             <Route path="/" element={<RestaurantList />} />
 
             {/*  <Route path="blogs" element={<Blogs />} />
