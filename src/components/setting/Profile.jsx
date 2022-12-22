@@ -1,10 +1,11 @@
 import React from 'react'
-import { IconButton, Typography, TextField, FormControl, InputLabel, OutlinedInput, InputAdornment, FormHelperText, Box, Button } from '@mui/material';
+import { IconButton, TextField, FormControl, InputLabel, OutlinedInput, InputAdornment, FormHelperText, Box, Button } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const style = {
   bgcolor: 'projPrimary.main',
   margin: "auto",
+  padding: 2,
 };
 
 const Profile = () => {

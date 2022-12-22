@@ -8,7 +8,7 @@ import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Avatar, Badge, Divider, ListItemIcon } from '@mui/material';
+import { Avatar, Badge, Divider, FormControl, FormHelperText, ListItemIcon, Switch } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
@@ -70,14 +70,18 @@ function Header() {
 
           <Box sx={{ display: "flex", flexDirection: 'row', justifyContent: 'space-between', alignItems: "center", width: { xs: "1.5rem", sm: "11rem" } }}>
             <Box display={{ xs: "none", sm: "flex" }} flexDirection="row" alignItems={"center"} justifyContent="space-around" width="50%">
-              <Tooltip title="Go to cart">
+              {/* <Tooltip title="Go to cart">
                 <IconButton sx={{ p: 1 }}>
                   <Badge badgeContent={4} color="projSecondary" sx={{ color: "#F5F5F5" }}>
                     <ShoppingCartIcon color="projDark" fontSize="large" />
                   </Badge>
                 </IconButton>
               </Tooltip>
-              <Typography color="projDark">Cart</Typography>
+              <Typography color="projDark">Cart</Typography> */}
+              <FormControl component="fieldset" variant="standard" >
+                <Switch inputProps={{ 'aria-label': 'controlled' }} defaultChecked color="success" />
+                <FormHelperText>Store Active</FormHelperText>
+              </FormControl>
             </Box>
             {userData && Object.keys(userData).length ? <Box display={{ xs: "none", sm: "block" }}>
               <Tooltip title="Open settings" >

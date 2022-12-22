@@ -11,6 +11,7 @@ import Registration from "./registration";
 import "./style.css"
 import Menu from "./menu";
 import Setting from "./setting";
+import RestaurantDashboard from "./restaurantdashboard";
 
 
 const theme = createTheme({
@@ -44,12 +45,9 @@ function PageRoutes() {
           <Routes>
             <Route path="/registration/:restaurant_id" element={<Registration />} />
             <Route path="/menu/:restaurant_id" element={<Menu />} />
-            <Route path="/setting" element={<Setting />} />
+            <Route path="/setting" element={<Setting />} /> 
+            <Route path="/restaurant/dashboard" element={<RestaurantDashboard />} /> 
             <Route path="/" element={<RestaurantList />} />
-
-            {/*  <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} /> */}
           </Routes>
         </BrowserRouter>
       </HeadFoot>

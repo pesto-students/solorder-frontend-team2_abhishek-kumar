@@ -59,6 +59,8 @@ const rows = [
 ];
 
 export default function OrderTable(props) {
+  let { paperStyle } = props;
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -72,7 +74,7 @@ export default function OrderTable(props) {
   };
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <Paper sx={{ width: '100%', overflow: 'hidden', ...paperStyle }}>
       <TableContainer >
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
