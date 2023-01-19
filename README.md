@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3a60744f-678f-4f08-a360-7d2e2dcb6560/deploy-status)](https://solorder.netlify.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  
 
-## Available Scripts
+# Solorder
 
-In the project directory, you can run:
+  
 
-### `npm start`
+![Solorder Icon](./public/logo512.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Solorder is an online food ordering website which helps restaurants, home kitchens, cloud kitchens and etc get their orders without giving any commission for the orders they receive online. This website is for those who use their own delivery person to deliver their items. Due to this owner can make more profit on each order and the customer gets the food items at a low price. Orders get delivered to customers faster because the owner uses their own delivery person.
 
-### `npm test`
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+What is the difference between Solorder and Swiggy or Zomato?
 
-### `npm run build`
+-   Other websites like Swiggy or Zomato take a major part of the profit as commissions due to this the item's cost online is higher compared to offline.
+    
+-   Due to this many of the restaurant owners have started taking online orders either through phone or by other online ways (Like WhatsApp, Instagram and etc), they also keep their own delivery person to deliver their online orders.
+    
+-   Here Solorder comes into play, it will provide a common platform for such owners so they can list their menus online and get their orders without thinking about how.
+    
+-   In Solorder, owners can buy a one-time subscription and can list its menu on our website.
+    
+-   Customers can place online orders that owners will deliver to them, so no commission system.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  
 
-### `npm run eject`
+# Table of Contents
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. [Demo](#demo)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. [Installation](#installation)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. [Technology Stack](#technology-stack)
 
-## Learn More
+4. [Authors](#authors)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. [License](#license)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  
 
-### Code Splitting
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  
 
-### Analyzing the Bundle Size
+# Demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  
 
-### Making a Progressive Web App
+[Live Demo](https://solorder.netlify.app/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  
 
-### Advanced Configuration
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  
 
-### Deployment
+Please Note:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  
 
-### `npm run build` fails to minify
+1. We recommend using this app in Google Chrome
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. Use the app on Laptop/desktop, Mobile, Tab or any device have browser.
+
+<br/>
+
+Test Credentials for Normal User:
+
+- Email: testuser@pestoproject.com
+
+- Password: 1234567890
+
+Test Credentials for Restaurant User:
+
+- Email: testowner@pestoproject.com
+
+- Password: 1234567890
+
+ 
+<br/>
+
+  
+
+# Installation
+
+  
+
+- Fork or directly clone this repository to your local machine
+
+- Use the `npm install` command to install dependencies
+
+- Once the dependencies are finished installing, use the `npm start` command inside the root directory to open the app in your local browser of choice
+
+  
+
+<br/>
+
+  
+
+# Technology Stack
+
+  
+
+We tried to use a completely modern tech stack while testing out some new technologies that we had never used before. This resulted in a fast, performant, and easily-extensible web app that should be fairly future-proof for the coming next several years. We used:
+
+  
+
+- [Mui](https://mui.com//)
+
+- [Zustand](https://zustand-demo.pmnd.rs/)
+
+- [Axios](https://axios-http.com/docs/intro)
+
+- [React Router](https://reactrouter.com/en/main)
+
+  
+
+<br/>
+
+  
+
+# Authors
+
+  
+
+- [Naveen](https://github.com/sauravarora041294)
+
+<br/>
+
+  
+
+# License
+
+  
+
+[MIT](https://opensource.org/licenses/MIT)
