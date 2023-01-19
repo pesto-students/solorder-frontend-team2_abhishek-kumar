@@ -9,6 +9,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import PageRoutes from './pages';
+import { StyledEngineProvider } from '@mui/material/styles';
 // import { BrowserRouter } from 'react-router-dom';
 
 
@@ -26,7 +27,9 @@ Sentry.init({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <BrowserRouter>
+  <StyledEngineProvider injectFirst>
     <PageRoutes />
+  </StyledEngineProvider>
   // </BrowserRouter>
 );
 
