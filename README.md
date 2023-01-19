@@ -133,7 +133,7 @@ We tried to use a completely modern tech stack while testing out some new techno
 
   
 
-- [Naveen](https://github.com/sauravarora041294)
+- [Naveen Mohanty](https://github.com/NaveenMohanty)
 
 <br/>
 
