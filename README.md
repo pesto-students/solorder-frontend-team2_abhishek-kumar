@@ -6,7 +6,7 @@
 
   
 
-![Solorder Icon](./public/logo512.png)
+![Solorder Icon](./public/image/solorder-logo.svg)
 
   
 
