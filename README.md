@@ -123,6 +123,10 @@ We tried to use a completely modern tech stack while testing out some new techno
 
 - [React Router](https://reactrouter.com/en/main)
 
+- [Socket.io](https://socket.io/)
+
+- [Razorpay](https://www.npmjs.com/package/razorpay)
+
   
 
 <br/>
