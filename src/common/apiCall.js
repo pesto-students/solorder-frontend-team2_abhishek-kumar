@@ -64,6 +64,7 @@ function apiCall({ url, method, data, headers, cb, loader, alert, onUploadProgre
 
     // `onDownloadProgress` allows handling of progress events for downloads
     // browser only
+    
     onDownloadProgress: function (progressEvent) {
       onDownloadProgress(progressEvent)
     },
