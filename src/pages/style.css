@@ -16,7 +16,7 @@ body {
   box-sizing: border-box;
 }
 
-.css-1a4cg4j-MuiButtonBase-root-MuiTab-root.Mui-selected {
+/* .css-1a4cg4j-MuiButtonBase-root-MuiTab-root.Mui-selected {
   color: #121112 !important;
 }
 
@@ -34,7 +34,7 @@ body {
   transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   pointer-events: none;
   color: #faaf00ad;
-}
+} */
 
 /* page Not Found CSS Starts here */
 

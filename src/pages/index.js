@@ -130,17 +130,6 @@ function PageRoutes() {
       element: <HeadFoot><Checkout /></HeadFoot>
     },
     {
-      path: "/404",
-      element: <HeadFoot><PageNotFound /></HeadFoot>
-    },
-    {
-      path: "*",
-      element: <HeadFoot><PageNotFound /></HeadFoot>
-    },
-  ]);
-
-  var ownerRouter = createBrowserRouter([
-    {
       path: "/registration/:restaurant_id",
       element: <HeadFoot><Registration /></HeadFoot>
     },
@@ -149,10 +138,6 @@ function PageRoutes() {
       element: <HeadFoot><RestaurantDashboard /></HeadFoot>
     },
     {
-      path: "/setting",
-      element: <HeadFoot><Setting /></HeadFoot>
-    },
-    {
       path: "/404",
       element: <HeadFoot><PageNotFound /></HeadFoot>
     },
@@ -162,10 +147,34 @@ function PageRoutes() {
     },
   ]);
 
+  // var ownerRouter = createBrowserRouter([
+  //   {
+  //     path: "/registration/:restaurant_id",
+  //     element: <HeadFoot><Registration /></HeadFoot>
+  //   },
+  //   {
+  //     path: "/restaurant/dashboard/:restaurant_id",
+  //     element: <HeadFoot><RestaurantDashboard /></HeadFoot>
+  //   },
+  //   {
+  //     path: "/setting",
+  //     element: <HeadFoot><Setting /></HeadFoot>
+  //   },
+  //   {
+  //     path: "/404",
+  //     element: <HeadFoot><PageNotFound /></HeadFoot>
+  //   },
+  //   {
+  //     path: "*",
+  //     element: <HeadFoot><PageNotFound /></HeadFoot>
+  //   },
+  // ]);
+
   return (
     <ThemeProvider theme={theme}>
       <Loader />
-      {isOwner ? <RouterProvider router={ownerRouter} /> : <RouterProvider router={userRouter} />}
+      {/* {isOwner ? <RouterProvider router={ownerRouter} /> : <RouterProvider router={userRouter} />} */}
+      <RouterProvider router={userRouter} />
       <MenuEditModel />
       <ImageCrop />
       <AddressModal />
