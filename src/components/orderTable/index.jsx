@@ -8,30 +8,31 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Pagination from '@mui/material/Pagination';
 import "./style.css"
-
+import { numToAmount } from '../../utils';
+import { IconButton, Tooltip } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Info';
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+  { id: 'orderId', label: 'Order ID', minWidth: 50, align: 'center' },
+  { id: 'name', label: 'Name', minWidth: 100, align: 'center' },
+  { id: 'items', label: 'Items', minWidth: 300, align: 'left' },
   {
-    id: 'population',
-    label: 'Population',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    id: 'orderDate',
+    label: 'Order Date',
+    minWidth: 100,
+    align: 'center',
   },
   {
-    id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    id: 'totalAmount',
+    label: 'Total\u00a0Amount',
+    minWidth: 50,
+    align: 'center',
   },
   {
-    id: 'density',
-    label: 'Density',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
+    id: 'action',
+    label: 'Action',
+    minWidth: 50,
+    align: 'center',
+    // format: (value) => value.toFixed(2),
   },
 ];
 
@@ -59,19 +60,29 @@ const rows = [
 ];
 
 export default function OrderTable(props) {
-  let { paperStyle } = props;
+  let { paperStyle, pastOrdersList, handleActiveModel } = props;
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const formatItems = (items) => {
+    let str = ""
+    items.forEach((item, idx) => {
+      if (idx === 0 || (items.length === 1) || (idx === items.length - 1))
+        str = str + `${item?.itemData?.name || ""} X ${item?.itemCount || ""}`
+      else
+        str = str + `${item?.itemData?.name || ""} X ${item?.itemCount || ""}, `
+    })
+    return str
+  }
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  const formatDate = (value) => {
+    let date = new Date(value)
+    var Str =
+      ("00" + date.getDate()).slice(-2)
+      + "/" + ("00" + (date.getMonth() + 1)).slice(-2)
+      + "/" + date.getFullYear() + " "
+      + ("00" + date.getHours()).slice(-2) + ":"
+      + ("00" + date.getMinutes()).slice(-2)
+    return Str
+  }
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden', ...paperStyle }}>
@@ -91,28 +102,40 @@ export default function OrderTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+            {pastOrdersList && pastOrdersList.length ?
+              pastOrdersList.map((order) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
+                  <TableRow hover role="checkbox" tabIndex={-1} key={order?.order_id}>
+
+                    <TableCell key={"orderId"} align={"center"}>
+                      {order?.order_id || "-"}
+                    </TableCell>
+                    <TableCell key={"ordnameerId"} align={"center"}>
+                      {order?.user?.name || "-"}
+                    </TableCell>
+                    <TableCell key={"items"} align={"left"}>
+                      {order?.items && formatItems(order.items) || "-"}
+                    </TableCell>
+                    <TableCell key={"orderdate"} align={"center"}>
+                      {order?.orderTime && formatDate(order.orderTime) || "-"}
+                    </TableCell>
+                    <TableCell key={"totalCost"} align={"center"}>
+                      {order?.totalCost && numToAmount(order.totalCost) || "-"}
+                    </TableCell>
+                    <TableCell key={"totalCost"} align={"center"}>
+                      <Tooltip title="View Details">
+                        <IconButton size='small' onClick={(e) => (handleActiveModel(true, (order?.order_id || ""), true, true))}>
+                          <InfoIcon color='projDark' />
+                        </IconButton>
+                      </Tooltip>
+                    </TableCell>
                   </TableRow>
                 );
-              })}
+              }) : []}
           </TableBody>
         </Table>
       </TableContainer>
-      <Pagination count={10} color="projSecondary" />
+      {/* <Pagination count={5} color="projSecondary" /> */}
     </Paper>
   );
 }

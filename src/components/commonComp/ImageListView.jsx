@@ -1,26 +1,59 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
+import { Box } from '@mui/system';
+import { Button } from '@mui/material';
 
-export default function ImageListView() {
+export default function ImageListView({ editView, galaryImgs, onDeleteImg, onSetDefaultImg, galaryView }) {
+
+  const [hover, setHover] = React.useState(null);
+  const onHover = (idx) => {
+    setHover(idx)
+  } 
   return (
-    <ImageList sm={{ cols: 1 }} sx={{ width: "90%", minHeight: "55.3vh", maxHeight: "55.3vh" }} >
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
+    <ImageList sm={{ cols: 1 }} sx={{ width: galaryView ? "97%" : "90%", maxHeight: galaryView ? "87vh" : "55.3vh" }}>
+      {galaryImgs?.length ? galaryImgs.map((item, idx) => (
+        <ImageListItem key={item.imgId} sx={{ position: "relative" }}>
           <img
-            src={`${item.img}?w=248&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
+            onMouseOver={() => { if (editView) onHover(idx + 1) }}
+            src={item.url}
+            srcSet={item.url}
+            alt={item.originalFilename}
             loading="lazy"
           />
-          <ImageListItemBar
-            title={item.title}
-            // subtitle={<span>by: {item.author}</span>}
-            position="below"
-          />
+          <Box sx={{ display: (hover === (idx + 1) && editView ? "flex" : "none"), justifyContent: "space-evenly", alignItems: "center", position: "absolute", backgroundColor: "#3b3a3a", height: "100%", width: "100%", opacity: 0.7 }}>
+            {item?.isDefaultImg ?
+              <Button sx={{
+                width: "130px", color: "projSecondary.darker", borderColor: "projSecondary.darker", '&:hover': {
+                  color: "projSecondary.darker", borderColor: "projSecondary.darker"
+                }
+              }}>
+                Default Image
+              </Button>
+              :
+              <>
+                <Button variant="outlined" sx={{
+                  width: "130px", color: "projSecondary.darker", borderColor: "projSecondary.darker", '&:hover': {
+                    color: "projSecondary.darker", borderColor: "projSecondary.darker"
+                  }
+                }}
+                  onClick={() => { onDeleteImg(item?.imgId) }}
+                >
+                  Delete
+                </Button>
+                <Button variant="outlined" sx={{
+                  width: "130px", color: "projSecondary.darker", borderColor: "projSecondary.darker", '&:hover': {
+                    color: "projSecondary.darker", borderColor: "projSecondary.darker"
+                  }
+                }}
+                  onClick={() => { onSetDefaultImg(item?.imgId) }}
+                >
+                  Set Default
+                </Button>
+              </>}
+          </Box>
         </ImageListItem>
-      ))}
+      )) : ""}
     </ImageList>
   );
 }

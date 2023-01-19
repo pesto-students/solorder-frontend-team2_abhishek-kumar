@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -6,8 +6,33 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import { styled } from '@mui/material/styles';
+import { numToAmount } from '../../utils';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-function RestaurantCard() {
+function RestaurantCard({ restaurantData }) {
+
+  const {
+    restaurant_id,
+    name,
+    deliveryTime,
+    galaryImgs,
+    costForTwo,
+    avgRating,
+    cuisines,
+  } = restaurantData
+
+  const [imgDefaultUrl, setImgDefaultUrl] = useState("")
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (galaryImgs && galaryImgs.length > 0) {
+      galaryImgs.forEach(imgData => {
+        if (imgData.isDefaultImg)
+          setImgDefaultUrl(imgData.url)
+      });
+    }
+  }, [galaryImgs]);
 
   const MenuButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(theme.palette.projSecondary.main),
@@ -31,37 +56,46 @@ function RestaurantCard() {
     }
   }))
 
+  const ratingColor = (rating = 0) => {
+    if (rating < 3)
+      return "#F53C3C"
+    else if (rating >= 3 && rating < 4)
+      return "#E9CB2F"
+    else
+      return "#7DC247"
+  }
+
   return (
     <MenuCard sx={{ padding: 1 }}>
       <CardActionArea sx={{ marginBottom: 1 }}>
         <CardMedia
           component="img"
           height="40%"
-          image="https://shorturl.at/guzDP"
+          image={imgDefaultUrl || "https://res.cloudinary.com/dxqrlh22r/image/upload/v1673789852/ms4ityrc3mqzmqrkuydl.png"}
           alt="green iguana"
         />
         <CardContent >
           <Typography gutterBottom variant="h5" component="div" fontWeight={800} fontSize={"1.5em"}>
-            Ziaka International
+            {name || ""}
           </Typography>
           <Typography variant="p" color="text.secondary" fontWeight={600} fontSize={"1em"}>
-            Lizards, lorem, lorem
+            {cuisines && cuisines.length > 0 && cuisines.join(", ") || ""}
           </Typography>
         </CardContent>
         <CardContent sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", pl: 1, pr: 1, pb: 0, pt: 0 }} >
-          <Typography variant="p" component="span" fontWeight={600} fontSize={"1em"} display="flex" alignItems="center" justifyContent="center" color={"projPrimary.main"} bgcolor={"green"} p={"2px 4px"}>
-            <StarIcon fontSize="small" sx={{ marginRight: "2px" }} />4.5
+          <Typography variant="p" component="span" width={50} fontWeight={600} fontSize={"1em"} display="flex" alignItems="center" justifyContent="center" color={"projPrimary.main"} bgcolor={ratingColor(avgRating)} p={"2px 4px"}>
+            <StarIcon fontSize="small" sx={{ marginRight: "2px" }} />{avgRating || 0}
           </Typography>
           <Typography variant="p" component="span" color="text.secondary" fontWeight={600} fontSize={"1em"}>
-            31 Mins
+            {deliveryTime || "0"} Mins
           </Typography>
           <Typography variant="p" component="span" color="text.secondary" fontWeight={600} fontSize={"1em"}>
-            ₹ 200 For Two
+            {costForTwo && numToAmount(costForTwo) || "₹0"} For Two
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <MenuButton>
+        <MenuButton onClick={() => { navigate(`/menu/${restaurant_id}`) }}>
           View Menu
         </MenuButton>
       </CardActions>

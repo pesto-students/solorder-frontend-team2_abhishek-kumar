@@ -73,7 +73,8 @@ export default function CustomTab(props) {
         <Tabs
           orientation="horizontal"
           variant="scrollable"
-          scrollButtons="auto"
+          scrollButtons
+          allowScrollButtonsMobile
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"

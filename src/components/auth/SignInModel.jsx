@@ -8,6 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import commonStore from '../../zustang/common/commonStore';
 import { setToken, setUserData, validateEmail } from '../../utils';
+import cartStore from '../../zustang/menucheckout/cartStore';
 
 const style = {
   position: 'absolute',
@@ -29,6 +30,10 @@ function SignInModel() {
     error: {},
     showPassword: false,
   });
+
+  const {
+    setCartUserId
+  } = cartStore(s => s)
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value, error: {} });
@@ -84,15 +89,22 @@ function SignInModel() {
       signIn({
         data: { email, password },
         cb: (res) => {
-          isLoader(false)
           let { data, error, msg, token } = res
           if (!error) {
             closeSignIn()
             notify(msg, 'success')
             setUserData(data)
             setToken(token)
+            if (data?.role_id === 1) {
+              setCartUserId(data?.user_id)
+              if (window?.location?.reload) window.location.reload(false)
+            } else if ((data?.role_id === 2) && data?.restaurant_id) {
+              if (window?.location?.replace) window.location.replace(('/registration/' + data.restaurant_id))
+            }
+            isLoader(false)
           } else {
             notify(msg, 'error')
+            isLoader(false)
           }
         }
       })

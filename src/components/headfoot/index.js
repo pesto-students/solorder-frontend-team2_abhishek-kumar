@@ -3,12 +3,13 @@ import Footer from './Footer';
 import Header from './Header';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/system';
-
+import SocketHelper from '../../common/socketHelper';
 
 const HeadFoot = ({ children, ...props }) => {
 
   return (
     <>
+      <SocketHelper />
       <Header {...props} />
       <Box
         sx={{

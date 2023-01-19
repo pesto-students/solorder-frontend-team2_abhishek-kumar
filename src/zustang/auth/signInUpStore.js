@@ -7,8 +7,6 @@ import { getToken, getUserData } from '../../utils';
 const signInUpStore = (set) => {
   let userData = getUserData()
   let token = getToken()
-
-  console.log({ userData, token })
   return {
     modelOpen: false,
     signUpModelOpen: false,

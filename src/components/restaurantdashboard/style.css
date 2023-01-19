@@ -1,0 +1,20 @@
+
+/* width */
+.MenuCard::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.MenuCard::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.MenuCard::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+.MenuCard::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

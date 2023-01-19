@@ -14,7 +14,17 @@ function apiCall({ url, method, data, headers, cb, loader, alert, onUploadProgre
   onUploadProgress = onUploadProgress || (() => { });
   onDownloadProgress = onDownloadProgress || (() => { });
   let token = getToken()
-  headers = headers ? { ...headers } : { "Content-Type": "application/json" };
+  headers = headers ? {
+    ...headers,
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'Expires': '0',
+  } : {
+    "Content-Type": "application/json",
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    'Expires': '0',
+  };
   if (token) headers['token'] = token;
 
   // For reference of axois config : https://axios-http.com/docs/req_config

@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
-import { Button, Divider, Grid, ListItemIcon, Menu, MenuItem, Tab, Tabs } from '@mui/material';
+import { Badge, Button, Divider, Grid, ListItemIcon, Menu, MenuItem, Tab, Tabs } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react'
 import RestaurantCard from '../../../components/restaurantCard';
 import TuneIcon from '@mui/icons-material/Tune';
 import SignInModel from '../../../components/auth/SignInModel';
+import restaurantStore from '../../../zustang/restaurant/restaurantStore';
+import cartStore from '../../../zustang/menucheckout/cartStore';
+import commonStore from '../../../zustang/common/commonStore';
 
 function a11yProps(index) {
   return {
@@ -14,12 +17,36 @@ function a11yProps(index) {
 }
 
 const RestaurantList = () => {
-
-  const [value, setValue] = React.useState(0);
+  const { isLoader, notify } = commonStore(s => s)
+  const { restaurantList, getRestaurantList, filterType, setFilterType, searchValue } = restaurantStore(s => s)
+  var { cartAddressData } = cartStore(s => s)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setFilterType(newValue);
   };
+
+  React.useEffect(() => {
+    if (Object.keys(cartAddressData).length) {
+      fetchRestaurantList()
+    }
+  }, [cartAddressData, filterType]);
+
+  const fetchRestaurantList = () => {
+    let data = {
+      "filterType": filterType && (Number(filterType) + 1) || 1,
+      "pincode": cartAddressData?.pincode || null,
+      "searchKey": searchValue || ""
+    }
+    isLoader(true)
+    getRestaurantList({
+      data,
+      cb: (res) => {
+        isLoader(false)
+        if (res.error)
+          notify(res.msg, "error")
+      }
+    })
+  }
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -84,7 +111,7 @@ const RestaurantList = () => {
   }))
 
   const CusButton = {
-    "display": "flex",
+    display: { lg: 'none', md: "none", sm: 'flex', xs: "flex" },
     "WebkitAlignItems": "center",
     "WebkitBoxAlign": "center",
     "MsFlexAlign": "center",
@@ -135,34 +162,34 @@ const RestaurantList = () => {
 
   return (
     <>
-      <Grid container sx={{ borderBottom: 1, borderColor: 'divider', marginBottom: 3 }}>
-        <Grid item lg={4} md={4} sm={6} xs={6}>
-          <CusBox styles={{ width: "100%", justifyContent: "start", "padding": "12px 0px" }}>
-            121 restaurant
-          </CusBox>
-        </Grid>
-        <Grid item lg={7} md={7} sm={0} xs={0} sx={{ display: { lg: 'block', md: "block", sm: 'none', xs: "none" } }}>
-          <Tabs value={value} onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="basic tabs example">
-            <Tab label="Relevance" {...a11yProps(0)} />
-            <Tab label="Delivery Time" {...a11yProps(1)} />
-            <Tab label="Rating" {...a11yProps(2)} />
-            <Tab label="Cost: Low To High" {...a11yProps(3)} />
-            <Tab label="Cost: High To Low" {...a11yProps(4)} />
-          </Tabs>
-        </Grid>
-        <Grid item display={"grid"} lg={1} md={1} sm={6} xs={6}>
-          <Button
-            sx={CusButton}
-            onClick={handleOpenUserMenu}>
-            Filter <TuneIcon />
-          </Button>
-        </Grid>
-      </Grid>
+      <Box container sx={{ borderBottom: 1, borderColor: 'divider', marginBottom: 3, display: "flex", justifyContent: "space-between" }}>
+        <CusBox styles={{ justifyContent: "start", "padding": "12px 0px" }}>
+          {restaurantList && restaurantList.length || 0} restaurant
+        </CusBox>
+
+
+        <Tabs value={filterType} sx={{ display: { lg: 'flex', md: "flex", sm: 'none', xs: "none" }, flexDirection: "row", alignItems: "flex-end", width: "max-content" }} onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="basic tabs example">
+          <Tab label="Relevance" {...a11yProps(0)} />
+          <Tab label="Delivery Time" {...a11yProps(1)} />
+          <Tab label="Rating" {...a11yProps(2)} />
+          <Tab label="Cost: Low To High" {...a11yProps(3)} />
+          <Tab label="Cost: High To Low" {...a11yProps(4)} />
+        </Tabs>
+
+
+        <Button
+          sx={CusButton}
+          onClick={handleOpenUserMenu}>
+          Filter <TuneIcon />
+        </Button>
+
+      </Box>
       <SignInModel />
-      <Grid container rowSpacing={2} columnSpacing={1}>
-        {[...Array(50).fill(0)].map(() => (<Grid item lg={3} md={4} sm={6} xs={12}>
-          <RestaurantCard />
-        </Grid>))}
+      <Grid container rowSpacing={2} columnSpacing={1} minHeight="80vh">
+        {restaurantList && restaurantList.length ?
+          restaurantList.map((resData) => (<Grid item lg={3} md={4} sm={6} xs={12}>
+            <RestaurantCard restaurantData={resData} />
+          </Grid>)) : ""}
       </Grid>
       <Menu
         anchorEl={anchorElUser}
@@ -199,49 +226,21 @@ const RestaurantList = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem sx={{ display: { xs: "block", sm: "none" } }} >
-          <ListItemIcon>
-            {/* <Badge badgeContent={4} color="projSecondary" sx={{ color: "#F5F5F5", fontSize: "2px" }}>
-                    <ShoppingCartIcon fontSize="small" sx={{ color: "#666565" }} />
-                  </Badge> */}
-          </ListItemIcon>
-          Cart
-        </MenuItem>
-        <Divider sx={{ display: { xs: "block", sm: "none" } }} />
-        <MenuItem sx={{ display: { xs: "block", sm: "none" } }}>
-          <ListItemIcon>
-            {/* <PersonIcon fontSize="small" /> */}
-          </ListItemIcon>
-          Sign In
-        </MenuItem>
-        <Divider sx={{ display: { xs: "block", sm: "none" } }} />
-        <MenuItem>
-          <ListItemIcon>
-            {/* <AccountCircleSharpIcon fontSize="small" /> */}
-          </ListItemIcon>
-          Profile
-        </MenuItem>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            {/* <MenuBookSharpIcon fontSize="small" /> */}
-          </ListItemIcon>
-          Orders
-        </MenuItem>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            {/* <HistoryToggleOffSharpIcon fontSize="small" /> */}
-          </ListItemIcon>
-          History
-        </MenuItem>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            {/* <LogoutSharpIcon fontSize="small" /> */}
-          </ListItemIcon>
-          Logout
-        </MenuItem>
+        <Tabs 
+        value={filterType}  
+        onChange={handleChange} 
+        textColor="secondary" 
+        indicatorColor="secondary" 
+        aria-label="basic tabs example"
+        orientation="vertical"
+        variant="scrollable"
+        >
+          <Tab label="Relevance" {...a11yProps(0)} />
+          <Tab label="Delivery Time" {...a11yProps(1)} />
+          <Tab label="Rating" {...a11yProps(2)} />
+          <Tab label="Cost: Low To High" {...a11yProps(3)} />
+          <Tab label="Cost: High To Low" {...a11yProps(4)} />
+        </Tabs>
       </Menu>
     </>
   )

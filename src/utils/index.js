@@ -24,10 +24,10 @@ export const getToken = () => {
   return token ? JSON.parse(token) : false;
 }
 
-export const numToAmount = (number = 0, dec = false) => {
+export const numToAmount = (number = 0, dec = false, emptyZero = false) => {
   number = Number(number)
   if (number === NaN) {
-    return "₹0"
+    return (emptyZero ? "₹0" : "")
   } else {
     return number.toLocaleString('en-IN', {
       maximumFractionDigits: dec ? 2 : 0,
@@ -35,4 +35,12 @@ export const numToAmount = (number = 0, dec = false) => {
       currency: 'INR'
     })
   }
+}
+
+export const convertOnlyNumber = (value = "", keepStr = false) => {
+  value = value.replace(/\D/g, '');
+  if (keepStr)
+    return value;
+  else
+    return value ? Number(value) : null;
 }
