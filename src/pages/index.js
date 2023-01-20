@@ -77,14 +77,14 @@ function PageRoutes() {
       })
     } else {
       setAddressData({
-        "address_id": 3,
-        "address": "28AD Ram Colony",
+        "address_id": 6,
+        "address": "123 house",
         "state": "Odisha",
-        "city": "Balasore H.O, Baleswar",
+        "city": "Srikanthapur, Baleswar",
         "pincode": 756001,
         "latitude": "21.13410000",
         "longitude": "85.63650000"
-      })
+    })
     }
   }
 

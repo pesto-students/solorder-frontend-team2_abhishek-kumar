@@ -73,7 +73,6 @@ function RestaurantCard({ restaurantData }) {
           height="40%"
           image={imgDefaultUrl || "/image/blank.png"}
           alt="green iguana"
-          sx={{background: "url('/image/blank.png') no-repeat"}}
         />
         <CardContent >
           <Typography gutterBottom variant="h5" component="div" fontWeight={800} fontSize={"1.5em"}>

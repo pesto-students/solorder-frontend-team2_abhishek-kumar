@@ -25,8 +25,8 @@ function SignInModel() {
   const { modelOpen: isOpen, handleModel: handleModle, signUpHandleModel, signIn } = signInUpStore(state => state)
   const { isLoader, notify } = commonStore(s => s)
   const [values, setValues] = React.useState({
-    password: "87654321",
-    email: "testname1@test.com",
+    password: "1234567890",
+    email: "testuser@pestoproject.com",
     error: {},
     showPassword: false,
   });

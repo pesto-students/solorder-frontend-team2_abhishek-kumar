@@ -73,13 +73,20 @@ function MenuHead({ restaurant_id, getRestaurantData }) {
   }
 
   let ratingSx= {
-    ".MuiRating-icon": {
+    ".MuiRating-iconEmpty": {
       "display": "flex",
       "WebkitTransition": "-webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
       "transition": "transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
       "pointerEvents": "none",
       "color": "#faaf00ad"
     },
+    ".MuiRating-labelEmptyValueActive": {
+      "display": "flex",
+      "WebkitTransition": "-webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+      "transition": "transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+      "pointerEvents": "none",
+      "color": "#faaf00ad"
+    }
   }
 
   return (

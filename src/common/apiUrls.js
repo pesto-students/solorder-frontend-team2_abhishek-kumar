@@ -25,6 +25,7 @@ const apiUrls = {
   pastorders: "/restaurant/pastorders",
   createorder: "/restaurant/createorder",
   updateorder: "/restaurant/updateorder",
+  deleteAddress: "/dashboard/deleteAddress/",
 };
 
 export default apiUrls;

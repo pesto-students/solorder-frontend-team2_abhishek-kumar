@@ -48,7 +48,7 @@ const AddressAndDelivery = (props) => {
             {/* <Button variant="contained" color="success" sx={{ width: "min-content", alignSelf:"flex-end" }} >Edit</Button> */}
             <Stack direction="row">
               <Button variant="contained" color="success" sx={{ display: viewOnly ? "none" : "block", width: "min-content", margin: "5px 0px 2px 0px" }} onClick={(e) => { onEdit ? onEdit() : e.preventDefault() }}>Edit</Button>
-              <Button variant="contained" color="error" sx={{ display: viewOnly ? "none" : "block", width: "min-content", margin: "5px 0px 2px 10px" }} onClick={(e) => { onDelete ? onDelete() : e.preventDefault() }}>Delete</Button>
+              <Button variant="contained" color="error" sx={{ display: viewOnly ? "none" : "block", width: "min-content", margin: "5px 0px 2px 10px" }} onClick={(e) => { onDelete ? onDelete((addressData?.address_id || null)) : e.preventDefault() }}>Delete</Button>
             </Stack>
           </Paper>}
     </>

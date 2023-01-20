@@ -53,6 +53,15 @@ const settingStore = (set) => ({
       }
     })
   },
+  deleteAddress: ({ cb, address_id }) => {
+    apiCall({
+      url: apiUrls.deleteAddress + address_id,
+      method: 'delete',
+      cb: (res) => {
+        cb && cb(res.data);
+      }
+    })
+  },
 })
 
 export default create(settingStore);
