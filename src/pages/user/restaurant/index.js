@@ -165,7 +165,8 @@ let tabsStyle = {
   },
   ".MuiTabs-indicator": {
     "backgroundColor": "#121112 !important"
-  }
+  },
+  display: { lg: 'block', md: "block", sm: 'none', xs: "none" },
 }
 
   return (
