@@ -112,25 +112,25 @@ const SelectPlan = ({ goNext, isDasboard, getSetRegistrationData }) => {
           <Box sx={{ display: "flex", justifyContent: "center", marginBottom: 2 }}><Button variant="contained" color="projPrimary" onClick={() => { setPlan(planList[0]) }}>Select</Button></Box>
         </Paper>
         <Paper variant="outlined" sx={{ justifyContent: "center", alignItems: "center", direction: "row", border: "2px solid #605A5A", bgcolor: "#F5F5F5" }}>
-          <Typography variant="h6" borderBottom="2px solid #605A5A" textAlign="center">Free Plan</Typography>
+          <Typography variant="h6" borderBottom="2px solid #605A5A" textAlign="center">Monthly plan</Typography>
           <Box>
             <ul style={{ margin: "30px" }} >
               <li><Typography variant="span" component="span" >This is a one time plan.</Typography></li>
               <li><Typography variant="span" component="span">Get Unlimited online order.</Typography></li>
-              <li><Typography variant="span" component="span">Valid for 15 days</Typography></li>
-              <li><Typography variant="span" component="span">Cost ₹0</Typography></li>
+              <li><Typography variant="span" component="span">Valid for 30 days</Typography></li>
+              <li><Typography variant="span" component="span">Cost ₹60</Typography></li>
             </ul>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "center", marginBottom: 2 }}><Button variant="contained" color="projPrimary" onClick={() => { setPlan(planList[1]) }}>Select</Button></Box>
         </Paper>
         <Paper variant="outlined" sx={{ justifyContent: "center", alignItems: "center", direction: "row", border: "2px solid #605A5A", bgcolor: "#F5F5F5" }}>
-          <Typography variant="h6" borderBottom="2px solid #605A5A" textAlign="center">Free Plan</Typography>
+          <Typography variant="h6" borderBottom="2px solid #605A5A" textAlign="center">Yearly Plan</Typography>
           <Box>
             <ul style={{ margin: "30px" }} >
               <li><Typography variant="span" component="span" >This is a one time plan.</Typography></li>
               <li><Typography variant="span" component="span">Get Unlimited online order.</Typography></li>
-              <li><Typography variant="span" component="span">Valid for 15 days</Typography></li>
-              <li><Typography variant="span" component="span">Cost ₹0</Typography></li>
+              <li><Typography variant="span" component="span">Valid for 365 days</Typography></li>
+              <li><Typography variant="span" component="span">Cost ₹600</Typography></li>
             </ul>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "center", marginBottom: 2 }}><Button variant="contained" color="projPrimary" onClick={() => { setPlan(planList[2]) }}>Select</Button></Box>

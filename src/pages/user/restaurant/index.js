@@ -165,13 +165,6 @@ let tabsStyle = {
   },
   ".MuiTabs-indicator": {
     "backgroundColor": "#121112 !important"
-  },
-  "css_1c99szj_MuiRating_icon_css_1c99szj_MuiRating_icon": {
-    "display": "flex",
-    "WebkitTransition": "-webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-    "transition": "transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-    "pointerEvents": "none",
-    "color": "#faaf00ad"
   }
 }
 

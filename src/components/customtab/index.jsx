@@ -53,6 +53,46 @@ export default function CustomTab(props) {
     setValue(newValue);
   };
 
+  let TabStyle = {
+    ".MuiTab-root.Mui-selected": {
+      "backgroundColor": "#ED6A6A",
+      "color": "hsl(0, 0%, 100%)"
+    },
+    ".MuiTabs-root.MuiTabs-indicator": {
+      "backgroundColor": "transparent !important"
+    },
+    "margin_left_auto": {
+      "marginLeft": "auto !important"
+    },
+    "margin_right_auto": {
+      "marginRight": "auto !important"
+    },
+    ".MuiTabs-indicator": {
+      "backgroundColor": "transparent !important"
+    },
+    borderRight: 1, borderColor: 'divider', bgcolor: 'background.paper', boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" 
+  }
+
+  let TabStyleMob = {
+    ".MuiTab-root.Mui-selected": {
+      "backgroundColor": "#ED6A6A",
+      "color": "hsl(0, 0%, 100%)"
+    },
+    ".MuiTabs-root.MuiTabs-indicator": {
+      "backgroundColor": "transparent !important"
+    },
+    "margin_left_auto": {
+      "marginLeft": "auto !important"
+    },
+    "margin_right_auto": {
+      "marginRight": "auto !important"
+    },
+    ".MuiTabs-indicator": {
+      "backgroundColor": "transparent !important"
+    },
+    borderRight: 1, borderColor: 'divider', margin: "auto"
+  }
+
   return (
     <Box
       sx={{ display: 'flex', width: "100%", flexDirection: { xl: "row", lg: "row", md: "row", sm: "column", xs: "column" } }}
@@ -63,8 +103,8 @@ export default function CustomTab(props) {
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: 'divider', bgcolor: 'background.paper', boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           className="custom-tab-container"
+          sx={TabStyle}
         >
           {Array.isArray(TabList) ? TabList.map((name, idx) => (<Tab className='custom-tab' label={name} {...a11yProps(idx)} />)) : ""}
         </Tabs>
@@ -78,7 +118,7 @@ export default function CustomTab(props) {
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: 'divider', margin: "auto" }}
+          sx={TabStyleMob}
           className="custom-tab-container"
         >
           {Array.isArray(TabList) ? TabList.map((name, idx) => (<Tab className={'custom-tab ' + (idx === 0 ? "margin-left-auto" : (TabList.length === (idx + 1)) ? "margin-right-auto" : "")} label={name} {...a11yProps(idx)} />)) : ""}

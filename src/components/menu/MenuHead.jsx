@@ -72,6 +72,16 @@ function MenuHead({ restaurant_id, getRestaurantData }) {
     })
   }
 
+  let ratingSx= {
+    ".MuiRating-icon": {
+      "display": "flex",
+      "WebkitTransition": "-webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+      "transition": "transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+      "pointerEvents": "none",
+      "color": "#faaf00ad"
+    },
+  }
+
   return (
     <Card sx={cardStyle}>
       <Box sx={{ width: { xl: "33%", lg: "33%", md: "33%", sm: '100%', xs: '100%' }, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
@@ -141,7 +151,7 @@ function MenuHead({ restaurant_id, getRestaurantData }) {
             </RadioGroup>
           </FormControl>
           <Box display={"flex"} flexDirection={"column"} alignItems="center" >
-            <Rating name="half-rating" precision={0.5} bgcolor="white" value={userData?.user_id ? (restDetails?.ratingList?.[String(userData.user_id)] || 0) : 0} onChange={handleRating} />
+            <Rating name="half-rating" sx={ratingSx} precision={0.5} bgcolor="white" value={userData?.user_id ? (restDetails?.ratingList?.[String(userData.user_id)] || 0) : 0} onChange={handleRating} />
             <Typography variant="h6" component="div" fontWeight={600} fontSize={"1em"} color="projPrimary.darker" paddingTop="1.5px">
               Rate me
             </Typography>
