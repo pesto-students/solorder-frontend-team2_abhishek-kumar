@@ -53,7 +53,7 @@ function apiCall({ url, method, data, headers, cb, loader, alert, onUploadProgre
 
     // `timeout` specifies the number of milliseconds before the request times out.
     // If the request takes longer than `timeout`, the request will be aborted.
-    timeout: 12000, // default is `0` (no timeout)
+    timeout: 120000, // default is `0` (no timeout)
 
 
     // `onUploadProgress` allows handling of progress events for uploads
