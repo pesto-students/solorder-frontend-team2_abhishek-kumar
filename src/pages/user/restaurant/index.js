@@ -159,27 +159,21 @@ const RestaurantList = () => {
     justifyContent: "end",
   }
 
-  let CusTabs = styled(Tabs)(({ theme, ...props }) => ({
-    display: { lg: 'flex', md: "flex", sm: 'none', xs: "none" },
-    flexDirection: "row",
-    alignItems: "flex-end",
-    width: "max-content",
-    ".css-1a4cg4j-MuiButtonBase-root-MuiTab-root.Mui-selected" :{
-      color: "#121112",
-    },
-    ".css-11yukd5-MuiTabs-indicator":{
-      backgroundColor: "#121112"
-    },
-    ".css-1c99szj-MuiRating-icon.css-1c99szj-MuiRating-icon":{
-      display: "flex",
-      // -webkit-transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      transition: "transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-      pointerEvents: "none",
-      color: "#faaf00ad"
-    }
-
-  }))
-
+let tabsStyle = {
+  ".MuiTab-root.Mui-selected": {
+    "color": "#121112 !important"
+  },
+  ".MuiTabs-indicator": {
+    "backgroundColor": "#121112 !important"
+  },
+  "css_1c99szj_MuiRating_icon_css_1c99szj_MuiRating_icon": {
+    "display": "flex",
+    "WebkitTransition": "-webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+    "transition": "transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+    "pointerEvents": "none",
+    "color": "#faaf00ad"
+  }
+}
 
   return (
     <>
@@ -189,13 +183,13 @@ const RestaurantList = () => {
         </CusBox>
 
 
-        <CusTabs value={filterType} onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="basic tabs example">
+        <Tabs value={filterType} sx={tabsStyle} onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="basic tabs example">
           <Tab label="Relevance" {...a11yProps(0)} />
           <Tab label="Delivery Time" {...a11yProps(1)} />
           <Tab label="Rating" {...a11yProps(2)} />
           <Tab label="Cost: Low To High" {...a11yProps(3)} />
           <Tab label="Cost: High To Low" {...a11yProps(4)} />
-        </CusTabs>
+        </Tabs>
 
 
         <Button
