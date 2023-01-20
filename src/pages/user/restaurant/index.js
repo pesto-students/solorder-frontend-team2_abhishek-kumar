@@ -159,7 +159,7 @@ const RestaurantList = () => {
     justifyContent: "end",
   }
 
-  let tabStyle = {
+  let CusTabs = styled(Tabs)(({ theme, ...props }) => ({
     display: { lg: 'flex', md: "flex", sm: 'none', xs: "none" },
     flexDirection: "row",
     alignItems: "flex-end",
@@ -178,7 +178,7 @@ const RestaurantList = () => {
       color: "#faaf00ad"
     }
 
-  }
+  }))
 
 
   return (
@@ -189,13 +189,13 @@ const RestaurantList = () => {
         </CusBox>
 
 
-        <Tabs value={filterType} sx={tabStyle} onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="basic tabs example">
+        <CusTabs value={filterType} onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="basic tabs example">
           <Tab label="Relevance" {...a11yProps(0)} />
           <Tab label="Delivery Time" {...a11yProps(1)} />
           <Tab label="Rating" {...a11yProps(2)} />
           <Tab label="Cost: Low To High" {...a11yProps(3)} />
           <Tab label="Cost: High To Low" {...a11yProps(4)} />
-        </Tabs>
+        </CusTabs>
 
 
         <Button

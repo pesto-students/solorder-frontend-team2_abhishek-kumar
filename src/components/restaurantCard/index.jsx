@@ -71,8 +71,9 @@ function RestaurantCard({ restaurantData }) {
         <CardMedia
           component="img"
           height="40%"
-          image={imgDefaultUrl || "https://res.cloudinary.com/dxqrlh22r/image/upload/v1673789852/ms4ityrc3mqzmqrkuydl.png"}
+          image={imgDefaultUrl || "/image/blank.png"}
           alt="green iguana"
+          sx={{background: "url('/image/blank.png') no-repeat"}}
         />
         <CardContent >
           <Typography gutterBottom variant="h5" component="div" fontWeight={800} fontSize={"1.5em"}>
