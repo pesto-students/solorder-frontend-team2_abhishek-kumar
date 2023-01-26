@@ -159,19 +159,28 @@ const RestaurantList = () => {
     justifyContent: "end",
   }
 
-let tabsStyle = {
-  ".MuiTab-root.Mui-selected": {
-    "color": "#121112 !important"
-  },
-  ".MuiTabs-indicator": {
-    "backgroundColor": "#121112 !important"
-  },
-  display: { lg: 'block', md: "block", sm: 'none', xs: "none" },
-}
+  let tabsStyle = {
+    ".MuiTab-root.Mui-selected": {
+      "color": "#121112 !important"
+    },
+    ".MuiTabs-indicator": {
+      "backgroundColor": "#121112 !important"
+    },
+    display: { lg: 'block', md: "block", sm: 'none', xs: "none" }
+  }
+
+  let tabsStyleMob = {
+    ".MuiTab-root.Mui-selected": {
+      "color": "#121112 !important"
+    },
+    ".MuiTabs-indicator": {
+      "backgroundColor": "#121112 !important"
+    }
+  }
 
   return (
     <>
-      <Box container sx={{ borderBottom: 1, borderColor: 'divider', marginBottom: 3, display: "flex", justifyContent: "space-between" }}>
+      <Box container sx={{ borderBottom: 1, borderColor: 'divider', marginBottom: 3, display: "flex", justifyContent: "space-between",height:"48px" }}>
         <CusBox styles={{ justifyContent: "start", "padding": "12px 0px" }}>
           {restaurantList && restaurantList.length || 0} restaurant
         </CusBox>
@@ -237,6 +246,7 @@ let tabsStyle = {
       >
         <Tabs
           value={filterType}
+          sx={tabsStyleMob}
           onChange={handleChange}
           textColor="secondary"
           indicatorColor="secondary"
