@@ -10,10 +10,12 @@ const signInUpStore = (set) => {
   return {
     modelOpen: false,
     signUpModelOpen: false,
+    forgetPassModelOpen: false,
     userData: userData ? userData : {},
     token: token ? token : "",
 
     handleModel: (isOpen = false) => set(state => ({ ...state, modelOpen: isOpen })),
+    forgetPassHandleModel: (isOpen = false) => set(state => ({ ...state, forgetPassModelOpen: isOpen })),
     signUpHandleModel: (isOpen = false) => set(state => ({ ...state, signUpModelOpen: isOpen })),
     signUp: ({ data, cb }) => {
       apiCall({
@@ -47,7 +49,37 @@ const signInUpStore = (set) => {
           cb(res.data);
         }
       })
-    }
+    },
+    sendOtp: ({ data, cb }) => {
+      apiCall({
+        url: apiUrls.sendotp,
+        method: 'post',
+        data,
+        cb: (res) => {
+          cb && cb(res.data);
+        }
+      })
+    },
+    validateOtp: ({ data, cb }) => {
+      apiCall({
+        url: apiUrls.validateotp,
+        method: 'post',
+        data,
+        cb: (res) => {
+          cb && cb(res.data);
+        }
+      })
+    },
+    updatePasswordViaOtp: ({ data, cb }) => {
+      apiCall({
+        url: apiUrls.updatePasswordViaOtp,
+        method: 'post',
+        data,
+        cb: (res) => {
+          cb && cb(res.data);
+        }
+      })
+    },
   }
 };
 

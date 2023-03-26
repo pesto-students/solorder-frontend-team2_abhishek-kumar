@@ -26,6 +26,9 @@ const apiUrls = {
   createorder: "/restaurant/createorder",
   updateorder: "/restaurant/updateorder",
   deleteAddress: "/dashboard/deleteAddress/",
+  sendotp: "/auth/sendotp",
+  validateotp: "/auth/validateotp",
+  updatePasswordViaOtp: "/auth/updatePasswordViaOtp",
 };
 
 export default apiUrls;

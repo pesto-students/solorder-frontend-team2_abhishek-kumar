@@ -149,7 +149,7 @@ function SignUpModel() {
       <Box sx={style}>
         <Box display={"flex"} justifyContent="end"><IconButton onClick={(e) => signUpHandleModel(false)}><CloseIcon color='projDark' /></IconButton></Box>
         <Typography variant='h5' component="div" fontWeight={500} marginTop="-25px">Sign Up</Typography>
-        <Typography variant='p' component="div" fontWeight={500}>or <span style={{ color: "#F53C3C" }} onClick={(e) => openSignIn(e)}>Sign In to your account.</span></Typography>
+        <Typography variant='p' component="div" fontWeight={500}>or <span style={{ color: "#F53C3C", cursor: "pointer" }} onClick={(e) => openSignIn(e)}>Sign In to your account.</span></Typography>
         <TextField
           sx={{ marginTop: 2, marginBottom: 1 }}
           id="name"

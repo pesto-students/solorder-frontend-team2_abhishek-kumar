@@ -25,6 +25,7 @@ import { setUserData } from "../utils";
 import cartStore from "../zustang/menucheckout/cartStore";
 import AddDeliveryPersonModel from "../components/restaurantdashboard/AddDeliveryPersonModel";
 import ActiveOrderModel from "../components/restaurantdashboard/ActiveOrderModel";
+import ForgetPassword from "../components/auth/ForgetPassword";
 
 
 const theme = createTheme({
@@ -184,6 +185,7 @@ function PageRoutes() {
       <AddDeliveryPersonModel />
       <ActiveOrderModel />
       <SoloSnackbar />
+      <ForgetPassword />
     </ThemeProvider>
   );
 }

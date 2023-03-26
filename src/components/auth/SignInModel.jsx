@@ -22,7 +22,7 @@ const style = {
 
 function SignInModel() {
 
-  const { modelOpen: isOpen, handleModel: handleModle, signUpHandleModel, signIn } = signInUpStore(state => state)
+  const { modelOpen: isOpen, handleModel: handleModle, signUpHandleModel, signIn, forgetPassHandleModel } = signInUpStore(state => state)
   const { isLoader, notify } = commonStore(s => s)
   const [values, setValues] = React.useState({
     password: "1234567890",
@@ -53,6 +53,12 @@ function SignInModel() {
   const openSignUp = (e) => {
     e?.preventDefault();
     signUpHandleModel(true);
+    handleModle(false);
+  }
+
+  const openForgetPass = (e) => {
+    e?.preventDefault();
+    forgetPassHandleModel(true);
     handleModle(false);
   }
 
@@ -137,7 +143,7 @@ function SignInModel() {
       <Box sx={style}>
         <Box display={"flex"} justifyContent="end"><IconButton onClick={closeSignIn}><CloseIcon color='projDark' /></IconButton></Box>
         <Typography variant='h5' component="div" fontWeight={500} marginTop="-25px">Sign In</Typography>
-        <Typography variant='p' component="div" fontWeight={500}>or <span style={{ color: "#F53C3C" }} onClick={(e) => openSignUp(e)}>Create an account.</span></Typography>
+        <Typography variant='p' component="div" fontWeight={500}>or <span style={{ color: "#F53C3C", cursor: "pointer" }} onClick={(e) => openSignUp(e)}>Create an account.</span></Typography>
         <TextField
           sx={{ marginTop: 2 }}
           id="email"
@@ -174,6 +180,7 @@ function SignInModel() {
           />
           <FormHelperText id="my-helper-text" sx={{ visibility: values?.error?.password ? "visible" : "hidden" }}>{values?.error?.password ? values?.error?.password : " "}</FormHelperText>
         </FormControl>
+        <Typography variant='p' component="div" fontWeight={500} sx={{ color: "#F53C3C", cursor: "pointer" }} onClick={(e)=>{openForgetPass(e)}}>Forgot Password?</Typography>
         <SignInBtn onClick={onSignIn}>Sign In</SignInBtn>
       </Box>
     </Modal>
